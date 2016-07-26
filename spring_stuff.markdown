@@ -14,20 +14,23 @@ Spring Boot
   - java -jar target/jarFilename.jar
   - That jar file will have everything needed to run it
 * SPRING INITIALIZR : Can create the project from the browser and can be imported into an IDE. Available at https://start.spring.io/
+* A Separate Microservice to monitor and baby sit the configuration of the existing Microservices is good (CONFIG SERVER)
 
 Annotations
 ===========
-* @SpringBootAplication : Top level annotation that encapsulates three other annotations
+* @SpringBootAplication      : Top level annotation that encapsulates three other annotations
   - @Configuration           : Hints that the contained class declares one or mean *@Bean* definitions
   - @EnableAutoConfiguration : Tells Spring Boot to automatically configure the Spring Application based on dependencies in the class path
   - @ComponentScan
-* @WebIntegrationTest : Ensures that the tests are fired against a fully up and running server.
-* @RestController : Indicates that a class has REST endpoints declared
-* @RequestMapping : Indicates a REST Endpoint which can be typed in the browser to get a resource
-* @ResponseBody : Indicates that some Entity is being returned from the resource. Usually some html will be displayed in the browser
+* @WebIntegrationTest        : Ensures that the tests are fired against a fully up and running server.
+* @RestController            : Indicates that a class has REST endpoints declared
+* @RequestMapping            : Indicates a REST Endpoint which can be typed in the browser to get a resource
+* @ResponseBody              : Indicates that some Entity is being returned from the resource. Usually some html will be displayed in the browser
 * @AutoWired
-* @ActiveProfiles : Used to specify the configuration profile to be sued for a particular test case
+* @ActiveProfiles            : Used to specify the configuration profile to be sued for a particular test case
 * @EnableGlobalMethodSecurity
+* @EnableConfigServer        : Baby sitter Microservice
+* @EnableDiscoveryClient
 
 Configuration Stuff
 ===================
@@ -43,6 +46,11 @@ Configuration Stuff
   - System.out.println(env.getProperty("bootrest.customproperty"))
   - env is an Environment object created as `Environment env`
 * Default Http listeners can be customized/changed from the pom.xml file using <exclusions> in <dependecy> to exclude something and then add something else.
+
+Definitions
+===========
+* Actuator End Points : Endpoints exposed via REST, JMX or others that give you the ability to see what the system is doing and ask questions on the system. 
+* Eureka : Netflix's Service Registry
 
 Testing
 =======
